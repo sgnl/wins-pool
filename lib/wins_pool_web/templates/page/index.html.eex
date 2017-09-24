@@ -1,0 +1,10 @@
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Winners thus far</h4>
+    <ul>
+      <%= for winner <- @winners do %>
+        <li><%= winner %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
