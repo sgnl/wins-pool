@@ -1,6 +1,6 @@
 defmodule WinsPoolWeb.PageController do
   use WinsPoolWeb, :controller
-  require WinsPoolWeb.RemoteAPI, as: API
+  require WinsPool.RemoteAPI, as: API
 
   def index(conn, _params) do
     result = API.getNamesOfWinners() # prolly move this to /api/ route for spa

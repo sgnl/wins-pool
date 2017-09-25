@@ -1,11 +1,12 @@
-defmodule WinsPoolWeb.RemoteAPI do
+defmodule WinsPool.RemoteAPI do
   import HTTPoison
   require XmlToMap
+  require WinsPool.GameLogic, as: GameLogic
 
   def getNamesOfWinners do
     getWeeksData
     |> Enum.map(&convertXMLToMap/1)
-    |> Enum.map(&determineWinners/1)
+    |> Enum.map(&GameLogic.determineWinners/1)
     |> Enum.concat
     |> Enum.filter(fn string -> String.length(string) > 0 end)
   end
@@ -24,18 +25,5 @@ defmodule WinsPoolWeb.RemoteAPI do
   defp convertXMLToMap(%HTTPoison.Response{body: body}) do
     # also trims some fat (useless nested levels)
     XmlToMap.naive_map(body)["ss"]["gms"]["g"]
-  end
-
-  defp determineWinners(games) do
-    Enum.map(games, fn game ->
-      cond do
-        game["hs"] > game["vs"] ->
-          game["hnn"]
-        game["hs"] < game["vs"] ->
-          game["vnn"]
-        true ->
-          ""
-      end
-    end)
   end
 end
