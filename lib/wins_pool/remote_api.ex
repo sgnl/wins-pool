@@ -10,11 +10,12 @@ defmodule WinsPool.RemoteAPI do
     |> Enum.concat
     |> Enum.filter(fn string -> String.length(string) > 0 end)
 
-    %WinsPool.GameData{namesOfWinners: namesOfWinners}
+    %WinsPool.GameData{ namesOfWinners: namesOfWinners}
   end
 
   def getWeeksData do
-    weeksRequestList = for i <- 1..17 do
+    weeksRequestList = for i <- 1..3 do
+    # weeksRequestList = for i <- 1..17 do
       Task.async(fn ->
         get!("http://www.nfl.com/ajax/scorestrip?season=2017&seasonType=REG&week=#{i}")
       end)

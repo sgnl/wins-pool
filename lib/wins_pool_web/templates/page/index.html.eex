@@ -2,8 +2,9 @@
   <div class="col-lg-6">
     <h4>Winners thus far</h4>
     <ul>
-      <%= for winner <- @winners do %>
-        <li><%= winner %></li>
+      <%= for teamTotals <- @playersTotalWins do %>
+        <h1><%= getPlayerName(teamTotals) %></h1>
+        <li><%= getPlayerScore(teamTotals) %></li>
       <% end %>
     </ul>
   </div>
