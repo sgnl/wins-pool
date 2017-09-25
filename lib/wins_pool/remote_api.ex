@@ -3,12 +3,14 @@ defmodule WinsPool.RemoteAPI do
   require XmlToMap
   require WinsPool.GameLogic, as: GameLogic
 
-  def getNamesOfWinners do
-    getWeeksData
+  def getWinnersOnly do
+    namesOfWinners = getWeeksData
     |> Enum.map(&convertXMLToMap/1)
     |> Enum.map(&GameLogic.determineWinners/1)
     |> Enum.concat
     |> Enum.filter(fn string -> String.length(string) > 0 end)
+
+    %WinsPool.GameData{namesOfWinners: namesOfWinners}
   end
 
   def getWeeksData do
