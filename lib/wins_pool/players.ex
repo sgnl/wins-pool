@@ -27,7 +27,7 @@ defmodule WinsPool.Players do
       kawika: [
         "Atlanta Falcons",
         "Kansas City Chiefs",
-        "Tampa Bay Bucs",
+        "Tampa Bay Buccaneers",
         "Cincinnati Bengals"
       ],
       justin: [
@@ -38,9 +38,15 @@ defmodule WinsPool.Players do
       ],
       andy: [
         "Green Bay Packers",
-        "Las Vegas Raiders",
+        "Oakland Raiders",
         "Los Angeles Chargers",
         "Washington Redskins"
+      ],
+      jesse: [
+        "New York Giants",
+        "Arizona Cardinals",
+        "Philadelphia Eagles",
+        "Baltimore Ravens"
       ]
     ]
 

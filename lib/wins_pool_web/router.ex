@@ -20,7 +20,7 @@ defmodule WinsPoolWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", WinsPoolWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", WinsPoolWeb do
+    pipe_through :api
+  end
 end

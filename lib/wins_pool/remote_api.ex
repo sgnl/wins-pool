@@ -14,8 +14,7 @@ defmodule WinsPool.RemoteAPI do
   end
 
   def getWeeksData do
-    weeksRequestList = for i <- 1..3 do
-    # weeksRequestList = for i <- 1..17 do
+    weeksRequestList = for i <- 1..17 do
       Task.async(fn ->
         get!("http://www.nfl.com/ajax/scorestrip?season=2017&seasonType=REG&week=#{i}")
       end)

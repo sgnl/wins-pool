@@ -5,10 +5,10 @@ defmodule WinsPool.GameLogic do
 
   def determineWinner(game) do
     cond do
-      game["hs"] > game["vs"] ->
+      Integer.parse(game["hs"]) > Integer.parse(game["vs"]) ->
         teamNameAsAtom = String.to_atom(game["hnn"])
         mapToRealTeamName[teamNameAsAtom]
-      game["hs"] < game["vs"] ->
+      Integer.parse(game["vs"]) > Integer.parse(game["hs"]) ->
         teamNameAsAtom = String.to_atom(game["vnn"])
         mapToRealTeamName[teamNameAsAtom]
       true ->
@@ -27,8 +27,6 @@ defmodule WinsPool.GameLogic do
     winCountsByTeamName = Enum.reduce(namesOfWinners, %{}, fn x, acc ->
       Map.update(acc, x, 1, &(&1 + 1))
     end)
-
-    # IO.puts(inspect(winCountsByTeamName))
 
     %WinsPool.GameData{ gameData | winCountsByTeamName: winCountsByTeamName }
   end
